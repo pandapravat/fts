@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<util:map id="initQueryMap">
+		<entry key="meditra.create.assct">
+			<value>
+				----associate 
+				CREATE TABLE associate 
+				  ( 
+				     sl_no                INTEGER, 
+				     seat_no              VARCHAR(20), 
+				     employee_id          INTEGER, 
+				     employee_name        VARCHAR(50), 
+				     email_id             VARCHAR(100), 
+				     card_no              INTEGER, 
+				     designation          VARCHAR(50), 
+				     mobile_no            VARCHAR(15), 
+				     extn                 INTEGER, 
+				     occupied_from_date   VARCHAR(15), 
+				     allocation_till_date VARCHAR(15), 
+				     won_swon             INTEGER, 
+				     asset_id1            VARCHAR(20), 
+				     project_id           VARCHAR(20), 
+				     project_name         VARCHAR(20), 
+				     client_group         VARCHAR(20), 
+				     sub_unit_sub_isu     VARCHAR(20), 
+				     unit_isu             VARCHAR(20), 
+				     unallocated          CHAR(1), 
+				     base_branch          VARCHAR(20), 
+				     shift                VARCHAR(10), 
+				     manager              VARCHAR(50) 
+				  )
+			</value>
+		</entry>
+		<entry key="meditrax.create.floorplan">
+			<value>
+			--floor plan 
+			CREATE TABLE floor_plan 
+			  ( 
+			     id          INTEGER, 
+			     floor_id    VARCHAR(20), 
+			     cube_id     VARCHAR(20), 
+			     row_num     INTEGER, 
+			     column_num  INTEGER, 
+			     cube_num    INTEGER, 
+			     visible     CHAR(1), 
+			     specialtxt VARCHAR(200) 
+			  ) 
+
+			</value>
+		</entry>
+
+		<entry key="meditrax.create.floorlist">
+			<value>
+			------ floor list 
+			CREATE TABLE floor_list 
+			  ( 
+			     odc_id      VARCHAR(20), 
+			     odc_name    VARCHAR(30), 
+			     office_name VARCHAR(30), 
+			     city        VARCHAR(30), 
+			     floor       INTEGER, 
+			     wing        VARCHAR(20),
+			     hit_count	 INTEGER 
+			  ) 
+			</value>
+		</entry>
+	</util:map>
+	
+</beans>

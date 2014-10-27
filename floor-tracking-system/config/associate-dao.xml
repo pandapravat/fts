@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- bean id="awappDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" lazy-init="true">
+		<property name="driverClassName" value="sun.jdbc.odbc.JdbcOdbcDriver" />
+		<property name="url"
+			value="jdbc:odbc:Driver=Microsoft Access Driver (*.mdb, *.accdb);DBQ=D:\\Pravat\\Database\\NewChange\\Associate_Details.accdb;" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+	</bean-->
+
+	<context:property-placeholder location="classpath:bi-config.properties" />
+	<import resource="classpath:init-db-queries.xml" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${com.pravat.meditrax.bi.ds.driverClassName}" />
+		<property name="url" value="${com.pravat.meditrax.bi.ds.url}" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+		<!-- <property name="connectionProperties"> <props> <prop key="derby.language.sequence.preallocator">50</prop> 
+			</props> </property> -->
+	</bean>
+
+	<bean id="atsDao" class="com.tcs.bbsr.ats.dao.AtsDaoImpl">
+		<property name="namedJdbcTemplate" ref="awappNamedParameterJdbcTemplate" />
+	</bean>
+	
+	<bean id="initDB" class="com.tcs.bbsr.ats.dao.SetUpDatabaseBean"/>
+
+	<!--ASCENT DB NamedParameterJdbcTemplate -->
+	<bean id="awappNamedParameterJdbcTemplate"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<!-- Annotation based transaction management -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <!-- (this dependency is defined somewhere else) -->
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+</beans> 
