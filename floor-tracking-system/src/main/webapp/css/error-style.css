@@ -1,0 +1,46 @@
+body {
+	font: 12px tahoma;
+}
+
+.errortitle {
+	text-transform: uppercase;
+	border: 1px solid black;
+	width: 80%;
+	font-weight: bold;
+	color: #f00;
+	margin: 20px;
+	font: 18px;
+}
+
+.errorShort {
+	text-transform: capitalize;
+	border: 1px solid black;
+	width: 80%;
+	font-weight: bold;
+	margin: 20px;
+	font: 13px;
+}
+
+.errorDesc {
+	text-transform: capitalize;
+	border: 1px solid black;
+	width: 80%;
+	margin: 20px;
+}
+
+.errorStack {
+	border: 1px solid black;
+	width: 80%;
+	margin: 20px;
+	overflow-y: auto;
+	height: 50%;
+	padding: 10px;
+}
+
+.formerror {
+	color: red;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+	text-align: center;
+}

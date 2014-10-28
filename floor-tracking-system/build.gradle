@@ -1,0 +1,81 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply plugin: 'eclipse-wtp'
+
+sourceCompatibility = 1.6
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+
+repositories {
+        mavenCentral()
+}
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
+eclipse {
+	classpath {
+	    //you can tweak the classpath of the Eclipse project by adding extra configurations:
+	    plusConfigurations += configurations.provided
+    }
+}
+
+dependencies {
+
+	def springframeworkVersion = '3.0.5.RELEASE'
+	 
+	compile("aopalliance:aopalliance:1.0")
+	compile("commons-dbcp:commons-dbcp:1.3")
+	compile("commons-io:commons-io:1.1")
+	compile("commons-lang:commons-lang:2.5")
+	compile("commons-logging:commons-logging:1.1.1")
+	compile("commons-pool:commons-pool:1.5.2")
+	compile("jstl:jstl:1.1.2")
+	compile("jdom:jdom:1.0")
+	compile("dom4j:dom4j:1.6.1")
+	compile("org.apache.derby:derby:10.10.1.1")
+	compile("taglibs:standard:1.1.2")
+	compile("org.apache.poi:poi:3.8")
+	compile("log4j:log4j:1.2.15") {
+		exclude group:'javax.jms'
+		exclude group: 'com.sun.jdmk'
+		exclude group: 'com.sun.jmx'
+		
+	}
+	compile("org.springframework:spring-jdbc:${springframeworkVersion}")
+	compile("org.springframework:spring-expression:${springframeworkVersion}")
+	compile("org.springframework:spring-webmvc:${springframeworkVersion}")
+	provided("javax.servlet:servlet-api:2.4")
+	testCompile("junit:junit:4.10")
+}
+
+jettyRun {
+   httpPort = 8000
+}
+
+
+war {
+    manifest {        
+        
+		attributes( 'Implementation-Title': 'floor-tracking-system',
+			'Built-Date' : new Date(),           
+		    'Built-By': System.getProperty('user.name'),
+		    'Built-JDK': System.getProperty('java.version')
+		)
+      	
+    }
+
+}
