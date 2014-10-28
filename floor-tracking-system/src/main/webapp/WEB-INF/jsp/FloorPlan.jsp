@@ -1,11 +1,11 @@
 <%@page import="org.apache.commons.lang.WordUtils"%>
 <%@page import="org.springframework.util.CollectionUtils"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
-<%@page import="com.tcs.bbsr.ats.domain.CubeLayout"%>
-<%@page import="com.tcs.bbsr.ats.domain.Cube"%>
-<%@page import="com.tcs.bbsr.ats.domain.RowLayout"%>
+<%@page import="com.pravatpanda.apps.ats.domain.CubeLayout"%>
+<%@page import="com.pravatpanda.apps.ats.domain.Cube"%>
+<%@page import="com.pravatpanda.apps.ats.domain.RowLayout"%>
 <%@page import="java.util.List"%>
-<%@page import="com.tcs.bbsr.ats.domain.FloorLayout"%>
+<%@page import="com.pravatpanda.apps.ats.domain.FloorLayout"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <script type="text/javascript" src="../js/addUpdate.js"></script>

@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<import resource="classpath:associate-dao.xml" />
-	<bean id="atsService" class="com.tcs.bbsr.ats.bi.AtsBiServiceImpl">
+	<bean id="atsService" class="com.pravatpanda.apps.ats.bi.AtsBiServiceImpl">
 		<property name="dao" ref="atsDao" />
 	</bean>
 

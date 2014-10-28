@@ -17,19 +17,19 @@
 	<import resource="classpath:init-db-queries.xml" />
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${com.pravat.meditrax.bi.ds.driverClassName}" />
-		<property name="url" value="${com.pravat.meditrax.bi.ds.url}" />
+		<property name="driverClassName" value="${com.pravatpanda.apps.ats.bi.ds.driverClassName}" />
+		<property name="url" value="${com.pravatpanda.apps.ats.bi.ds.url}" />
 		<property name="username" value="" />
 		<property name="password" value="" />
 		<!-- <property name="connectionProperties"> <props> <prop key="derby.language.sequence.preallocator">50</prop> 
 			</props> </property> -->
 	</bean>
 
-	<bean id="atsDao" class="com.tcs.bbsr.ats.dao.AtsDaoImpl">
+	<bean id="atsDao" class="com.pravatpanda.apps.ats.dao.AtsDaoImpl">
 		<property name="namedJdbcTemplate" ref="awappNamedParameterJdbcTemplate" />
 	</bean>
 
-	<bean id="initDB" class="com.tcs.bbsr.ats.dao.SetUpDatabaseBean" />
+	<bean id="initDB" class="com.pravatpanda.apps.ats.dao.SetUpDatabaseBean" />
 
 	<!--ASCENT DB NamedParameterJdbcTemplate -->
 	<bean id="awappNamedParameterJdbcTemplate"

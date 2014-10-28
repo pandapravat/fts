@@ -1,6 +1,6 @@
 <%@page import="org.springframework.util.CollectionUtils"%>
-<%@page import="com.tcs.bbsr.ats.domain.AssociateInfoMin"%>
-<%@page import="com.tcs.bbsr.ats.domain.AssociateInfo"%>
+<%@page import="com.pravatpanda.apps.ats.domain.AssociateInfoMin"%>
+<%@page import="com.pravatpanda.apps.ats.domain.AssociateInfo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
