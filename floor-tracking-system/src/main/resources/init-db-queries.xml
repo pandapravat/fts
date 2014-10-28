@@ -74,6 +74,16 @@
 				)
 			</value>
 		</entry>
+		<entry key="meditrax.insert.dlftimg">
+			<value>
+				------ floor list
+				CREATE TABLE fts_meta
+				(
+				meta_id VARCHAR(10),
+				image blob
+				)
+			</value>
+		</entry>
 	</util:map>
 
 </beans>

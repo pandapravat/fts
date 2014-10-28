@@ -46,7 +46,7 @@ dependencies {
 	compile("jstl:jstl:1.1.2")
 	compile("jdom:jdom:1.0")
 	compile("dom4j:dom4j:1.6.1")
-	compile("org.apache.derby:derby:10.10.1.1")
+	compile("org.apache.derby:derby:10.11.1.1")
 	compile("taglibs:standard:1.1.2")
 	compile("org.apache.poi:poi:3.8")
 	compile("log4j:log4j:1.2.15") {

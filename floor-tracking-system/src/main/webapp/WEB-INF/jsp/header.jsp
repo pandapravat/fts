@@ -11,7 +11,7 @@
 
 <div>
 	<div class='logo'>
-		<img alt="TCS Logo" class="logoImg" src="../images/tcs-logo.jpg"
+		<img alt="TCS Logo" class="logoImg" src="<%=request.getContextPath() %>/ats/getLogo.ats"
 			title="TCS logo">
 	</div>
 	<div class="headerTxt">Floor Tracking System</div>

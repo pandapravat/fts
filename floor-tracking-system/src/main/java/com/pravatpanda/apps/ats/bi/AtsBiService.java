@@ -26,4 +26,6 @@ public interface AtsBiService {
 	void removeFloor(String odcId);
 	public int retrieveHitCount(String floorId);
 	NewOdcVO getFloorById(String floorId);
+
+	byte[] getConfiguredLogo();
 }

@@ -9,17 +9,18 @@ public class AtsException extends RuntimeException{
 	Exception 	rootException;
 	
 	public AtsException(String errorCode, String shortText) {
-		this.errorCode = errorCode;
-		this.shortText = shortText;
+		this(errorCode, shortText, null, null);
 	}
 	
 	public AtsException(String errorCode, String shortText, String description) {
-		this(errorCode, shortText);
-		this.description = description;
+		this(errorCode, shortText, description, null);
 	}
 	
 	public AtsException(String errorCode, String shortText, String description, Exception e) {
-		this(errorCode, shortText, description);
+		super(e);
+		this.errorCode = errorCode;
+		this.shortText = shortText;
+		this.description = description;
 		this.rootException = e;
 	}
 	

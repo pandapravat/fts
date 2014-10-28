@@ -209,4 +209,9 @@ public class AtsBiServiceImpl implements AtsBiService {
 	public NewOdcVO getFloorById(String floorId) {
 		return dao.getFloorById( floorId);
 	}
+
+	@Override
+	public byte[] getConfiguredLogo() {
+		return dao.getConfiguredImage();
+	}
 }

@@ -1,12 +1,17 @@
 package com.pravatpanda.apps.ats.dao;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -15,6 +20,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.util.CollectionUtils;
 
+import com.pravatpanda.apps.ats.bi.AtsException;
 import com.pravatpanda.apps.ats.domain.AssociateInfo;
 import com.pravatpanda.apps.ats.domain.AssociateInfoMin;
 import com.pravatpanda.apps.ats.domain.Cube;
@@ -606,5 +612,28 @@ public class AtsDaoImpl implements AtsDao{
 		});
 		
 		return queryForObject;
+	}
+
+	@Override
+	public byte[] getConfiguredImage() {
+		
+		System.gc();
+		String sql = "select image from fts_meta where meta_id='logo'";
+		byte[] blob = namedJdbcTemplate.queryForObject(sql, Collections.<String, Object>emptyMap(), new RowMapper<byte[]>() {
+
+			@Override
+			public byte[] mapRow(ResultSet arg0, int arg1) throws SQLException {
+				Blob blob2 = arg0.getBlob(1);
+				InputStream binaryStream = blob2.getBinaryStream();
+				try {
+					return IOUtils.toByteArray(binaryStream);
+				} catch (IOException e) {
+					throw new AtsException("Error Reading blob for image", e);
+				}
+			}
+		});
+		
+		return blob;
+		
 	}
 }

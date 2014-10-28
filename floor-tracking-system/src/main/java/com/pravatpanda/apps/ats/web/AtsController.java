@@ -373,6 +373,22 @@ public class AtsController {
 		return "redirect:/ats/chooseFloor.ats?message=Floor removed successfully";
 	}
 	
+	@RequestMapping("ats/getLogo.ats")
+	public void getLogo(HttpServletResponse resp) {
+		byte[] logoBytes = sevice.getConfiguredLogo();
+		resp.setContentType("image/jpeg");
+		ServletOutputStream stream = null;
+		try {
+			IOUtils.write(logoBytes, stream = resp.getOutputStream());
+			resp.flushBuffer();
+		} catch (IOException e) {
+			throw new AtsException("Error writing image to http response", e);
+		} finally {
+			IOUtils.closeQuietly(stream);
+		}
+		
+	}
+	
 	
 	/*@RequestMapping("/ats/searchForm.ats")
 	public ModelAndView showSearch(@ModelAttribute NewOdcVO odcVO,

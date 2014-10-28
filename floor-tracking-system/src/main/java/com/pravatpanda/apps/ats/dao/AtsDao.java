@@ -65,4 +65,6 @@ public interface AtsDao {
 	int retrieveHitCount(String floorId);
 
 	NewOdcVO getFloorById(String floorId);
+
+	byte[] getConfiguredImage();
 }

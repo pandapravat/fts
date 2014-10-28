@@ -16,11 +16,13 @@
 	<context:property-placeholder location="classpath:bi-config.properties" />
 	<import resource="classpath:init-db-queries.xml" />
 	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${com.pravatpanda.apps.ats.bi.ds.driverClassName}" />
 		<property name="url" value="${com.pravatpanda.apps.ats.bi.ds.url}" />
 		<property name="username" value="" />
 		<property name="password" value="" />
+		<property name="initialSize" value="2"/>
+    	<property name="maxActive" value="5"/>
 		<!-- <property name="connectionProperties"> <props> <prop key="derby.language.sequence.preallocator">50</prop> 
 			</props> </property> -->
 	</bean>
