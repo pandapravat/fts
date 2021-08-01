@@ -1,11 +1,10 @@
-fts
-===
+# FTS - Floor tracking system
 Floor tracking system a.k.a fts is an application that is used to track the setaing arrangements of employees sitting on a floor.
 
-Checking out and using the project
-===
+## Checking out and using the project
+### Pre requisites
 You need to have gradle installed to run the project
-You need to have eclipse with git support or this can be downloaded with git command line.
+### Checking out
 <ol>
 <li>Checkout the pproject to your local directory.
 <li>Navigate to floor-tracking-system and build it using gradle. Alternatively you can directly deploy to the inbuilt jetty with the jettyRun command.<br>
